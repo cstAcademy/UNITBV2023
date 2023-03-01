@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- <script src="https://www.w3schools.com/images/picture.jpg"></script> -->
+    <!-- <script src="/Lab2/logic.js"></script> -->
+    <!-- <script src="../Lab2/logic.js"></script> -->
+    <!-- <script src="./logic.js"></script> -->
+    <script defer src="logic.js"></script>
+    <title>My first website</title>
+  </head>
+
+  <body>
+    <div id="title-image-container">
+      <div id="title-container">
+        <h1>What is Lorem Ipsum?</h1>
+        <h2></h2>
+        <p>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book. It has survived not only
+          five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with
+          the release of Letraset sheets containing Lorem Ipsum passages, and
+          more recently with desktop publishing software like Aldus PageMaker
+          including versions of Lorem Ipsum.
+        </p>
+        <button class="button-style">Hover me</button>
+      </div>
+
+      <img
+        id="frontend-dev-image"
+        src="frontend.png"
+        alt="frontend-dev-image"
+      />
+    </div>
+
+    <div class="content">
+      <div id="cards-container">
+        <div class="card">
+          <span class="card-title"
+            ><div>This</div>
+            <div>is</div>
+            <span>an</span> <span>unordered</span> <span>list</span></span
+          >
+          <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+          </ul>
+          <a
+            href="https://www.w3schools.com/html/html_lists_unordered.asp"
+            class="card-link"
+            >See more</a
+          >
+        </div>
+        <div class="card">
+          <span class="card-title">This is an ordered list</span>
+          <ol>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+          </ol>
+          <a
+            href="https://www.w3schools.com/html/html_lists_ordered.asp"
+            class="card-link"
+            target="_blank"
+            >See more in new tab</a
+          >
+        </div>
+        <div class="card">
+          <span class="card-title">This is a list with checkboxes</span>
+          <ul>
+            <li>
+              <input type="checkbox" id="item1" name="item1" />
+              <label for="item1">Item1</label>
+            </li>
+
+            <li>
+              <input type="checkbox" id="item2" name="item2" />
+              <label for="item2">Item2</label>
+            </li>
+            <li>
+              <input type="checkbox" id="item3" name="item3" />
+              <label for="item3">Item3</label>
+            </li>
+          </ul>
+          <a
+            href="https://www.w3schools.com/tags/att_input_type_checkbox.asp"
+            class="card-link"
+            >See more
+          </a>
+        </div>
+      </div>
+
+      <div class="form-container">
+        <div class="item">
+          <label for="fname">Type your first name:</label>
+          <input type="text" id="fname" name="fname" placeholder="First name" />
+        </div>
+
+        <div class="item">
+          <label for="lname">Type your last name:</label>
+          <input type="text" id="lname" name="lname" placeholder="Last name" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
