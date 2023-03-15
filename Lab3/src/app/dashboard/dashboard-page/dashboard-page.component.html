@@ -1,0 +1,6 @@
+<p>dashboard-page works!</p>
+
+<div *ngFor="let game of arrayOfGames; let index = index">
+  {{ index }}
+  <app-game-card *ngIf="index !== 1"></app-game-card>
+</div>
