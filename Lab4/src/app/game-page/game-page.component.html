@@ -1,0 +1,9 @@
+<p>game-page works!</p>
+
+<div *ngIf="gameSavedInService" class="container">
+  <img [src]="gameSavedInService.image" alt="image" class="image-content"/>
+  <div class="data-content">
+    <h1>{{ gameSavedInService.title }}</h1>
+    <p>{{ gameSavedInService.description }}</p>
+  </div>
+</div>

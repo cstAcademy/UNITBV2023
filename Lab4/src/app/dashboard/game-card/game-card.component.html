@@ -1,0 +1,21 @@
+<div class="card-container">
+  <img [src]="game.image" alt="image" />
+  <div class="title-flex">
+    <h3>{{ game.title }}</h3>
+    <button (click)="navigateToGamePage()">Go to game page</button>
+  </div>
+  <p>{{ game.description }}</p>
+
+  <div>
+    Leave a review
+    <input [(ngModel)]="review" />
+    <button (click)="clearReview()">clear</button>
+  </div>
+  <div>{{ review }}</div>
+
+  <div *ngIf="showVoteButton" class="button-container">
+    <button (click)="emitGame()">Vote For Best Game Awards</button>
+
+    <button (click)="subjectGame()">Subject Vote For Best Game Awards</button>
+  </div>
+</div>

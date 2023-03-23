@@ -1,0 +1,11 @@
+<p>dashboard-page works!</p>
+
+<div *ngIf="bestGameAward">
+  <app-game-card [game]="bestGameAward" [showVoteButton]="false"></app-game-card>
+</div>
+
+<div class="game-list-container">
+  <ng-container *ngFor="let thisGame of arrayOfGames; let index = index">
+    <app-game-card [game]="thisGame" (gameEmitter)="setBestGame($event)"></app-game-card>
+  </ng-container>
+</div>
