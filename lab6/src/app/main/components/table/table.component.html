@@ -1,0 +1,67 @@
+<div class="table-container">
+  <div class="table-operations">
+    <button nz-button (click)="sortByYear()" nzType="primary">
+      Sort By Year
+    </button>
+    <button nz-button (click)="addNewMovie()" nzType="primary">
+      Add New Movie
+    </button>
+  </div>
+
+  <nz-table #basicTable [nzData]="moviesList" [nzPageSize]="5">
+    <thead>
+      <tr>
+        <th nzLeft>Title</th>
+        <th>Year</th>
+        <th>Coming Soon</th>
+        <th>Runtime</th>
+        <th>Genre</th>
+        <th>Actors</th>
+        <th>Plot</th>
+        <th>Awards</th>
+        <!-- <th>Poster</th> -->
+        <th>imdb Rating</th>
+        <!-- <th>Images</th> -->
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <!-- ! pipe -->
+        <td nzLeft>{{ data.title | uppercase }}</td>
+        <td>{{ data.year }}</td>
+        <td>
+          <span
+            nz-icon
+            [nzType]="
+              data.comingSoon === true ? 'check-circle' : 'close-circle'
+            "
+            nzTheme="outline"
+          ></span>
+        </td>
+        <td>{{ data.runtime }}</td>
+        <td>{{ data.genre }}</td>
+        <td>{{ data.actors }}</td>
+        <td>{{ data.plot }}</td>
+        <td>{{ data.awards }}</td>
+        <!-- <td>{{ data.poster }}</td> -->
+        <td>{{ data.imdbRating }}</td>
+        <!-- <td>{{ data.images }}</td> -->
+        <td>
+          <span
+            nz-icon
+            nzType="delete"
+            nzTheme="outline"
+            (click)="deleteMovie(data)"
+          ></span>
+          <span
+            nz-icon
+            nzType="edit"
+            nzTheme="outline"
+            (click)="editMovie(data)"
+          ></span>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
