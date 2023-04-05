@@ -1,0 +1,6 @@
+<button nz-button nzType="primary" (click)="showLogin()">Login</button>
+
+<app-login-form
+  [isVisible]="showLoginModal"
+  (closeModal)="showLoginModal = false"
+></app-login-form>
