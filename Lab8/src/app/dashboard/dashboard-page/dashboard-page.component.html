@@ -1,0 +1,17 @@
+<div id="new-user-container">
+  <input nz-input placeholder="Name" [(ngModel)]="newUserName" />
+  <input nz-input placeholder="Job" [(ngModel)]="newUserJob" />
+  <button
+    nz-button
+    [disabled]="!newUserName || !newUserJob"
+    [nzLoading]="isAddingUser"
+    (click)="addNewUser()"
+    nzType="primary"
+  >
+    Add new user
+  </button>
+</div>
+
+<div id="users-container">
+  <app-user *ngFor="let user of users" [userData]="user"></app-user>
+</div>

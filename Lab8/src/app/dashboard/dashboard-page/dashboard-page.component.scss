@@ -1,0 +1,15 @@
+#users-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  text-align: center;
+  justify-items: center;
+  margin-top: 1rem;
+}
+
+#new-user-container {
+  margin: 3rem;
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-start;
+}
