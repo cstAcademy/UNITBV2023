@@ -28,7 +28,7 @@ export class DashboardPageComponent implements OnInit {
   getListOfUsers() {
     this.userService.getListOfUsers().subscribe({
       next: (res) => {
-        this.users = res.data;
+        this.users = res;
       },
       error: (err) => {
         this.users = [];
