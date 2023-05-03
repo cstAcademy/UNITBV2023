@@ -1,18 +1,26 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, UrlTree } from '@angular/router';
+import { CanActivate, Router, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor() {}
+  constructor(private router: Router) {}
 
   canActivate():
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return window.localStorage.getItem('userToken') ? true : false;
+    if (
+      localStorage.getItem('userToken') ||
+      sessionStorage.getItem('userToken')
+    ) {
+      return true;
+    }
+
+    this.router.navigateByUrl('/');
+    return false;
   }
 }

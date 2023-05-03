@@ -1,12 +1,17 @@
 <div id="auth-page">
   <h1>AUTH PAGE</h1>
+
+  <p>
+    Am i logged in? <b>{{ userToken ? "yes" : "no" }}</b>
+  </p>
+
   <button class="button success" (click)="onSuccessRequest()">
-    Success Request
+    Success Login
   </button>
-  <button class="button error" (click)="onErrorRequest()">Error Request</button>
+  <button class="button error" (click)="onErrorRequest()">Error Login</button>
   <div class="remember-container">
     <button class="button remember" (click)="onRememberMeRequest()">
-      Remember Me Request
+      Remember Me Login
     </button>
     <div class="remember-me">
       <input id="remember-me" type="checkbox" [(ngModel)]="rememberMe" />

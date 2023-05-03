@@ -17,6 +17,7 @@ button {
   padding: 0.5rem 1rem;
   text-align: center;
   vertical-align: middle;
+  min-width: 300px;
 
   &.success {
     background-color: #2ea44e;

@@ -1,6 +1,7 @@
-import { AuthService } from '../../services/auth.service';
-import { LogInPayload } from '../../interfaces/login.payload';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LogInPayload } from '../../interfaces/login.payload';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-auth-page',
@@ -9,11 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthPageComponent implements OnInit {
   rememberMe: boolean = false;
-  userToken: string = '';
+  userToken: string | null = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userToken = this.authService.getToken();
+  }
 
   onSuccessRequest(): void {
     const payload: LogInPayload = {
@@ -24,25 +27,46 @@ export class AuthPageComponent implements OnInit {
       console.log(response);
       this.authService.setToken(response.token);
       this.userToken = this.authService.getToken();
+      sessionStorage.setItem('userToken', response.token);
+      this.router.navigateByUrl('/dashboard');
     });
   }
 
   onErrorRequest(): void {
-    this.authService
-      .errorLogIn({ email: 'peter@klaven' })
-      .subscribe((response) => {
+    this.authService.errorLogIn({ email: 'peter@klaven' }).subscribe({
+      next: (response) => {
         console.log(response);
-      });
+      },
+      error: (err) => {
+        console.error(err);
+        this.userToken = null;
+        this.authService.logOut();
+      },
+    });
   }
 
   onRememberMeRequest(): void {
-    this.onSuccessRequest();
+    const payload: LogInPayload = {
+      email: 'eve.holt@reqres.in',
+      password: 'cityslicka',
+    };
+    this.authService.successLogIn(payload).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.authService.setToken(response.token);
+        this.userToken = this.authService.getToken();
 
-    if (this.rememberMe) {
-      window.localStorage.setItem('userToken', this.userToken);
-      return;
-    } else {
-      window.sessionStorage.setItem('userToken', this.userToken);
-    }
+        if (this.rememberMe) {
+          localStorage.setItem('userToken', response.token);
+        } else {
+          sessionStorage.setItem('userToken', response.token);
+        }
+
+        this.router.navigateByUrl('/dashboard');
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    });
   }
 }
