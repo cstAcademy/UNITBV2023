@@ -1,0 +1,16 @@
+<div id="auth-page">
+  <h1>AUTH PAGE</h1>
+  <button class="button success" (click)="onSuccessRequest()">
+    Success Request
+  </button>
+  <button class="button error" (click)="onErrorRequest()">Error Request</button>
+  <div class="remember-container">
+    <button class="button remember" (click)="onRememberMeRequest()">
+      Remember Me Request
+    </button>
+    <div class="remember-me">
+      <input id="remember-me" type="checkbox" [(ngModel)]="rememberMe" />
+      <label for="remember-me">Remember me</label>
+    </div>
+  </div>
+</div>
